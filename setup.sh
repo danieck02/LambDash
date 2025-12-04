@@ -1,18 +1,18 @@
 #!/bin/bash
 
-echo "🚚 Transport Dashboard Installer (macOS)"
+echo "🚚 Transport Dashboard"
 echo "======================================="
 
 sleep 1
 
 # Node.js check
-if ! command -v node &> /dev/null
-then
-    echo "Node.js niet gevonden! Installeren via Homebrew..."
+ ! command -v node &> /dev/null
+
+    
     brew install node
-else
-    echo "✔ Node.js OK"
-fi
+
+    
+
 
 sleep 1
 
@@ -233,19 +233,15 @@ cd ../..
 ###############################################
 cat << 'EOF' > start-all.sh
 #!/bin/bash
-echo "🚀 Start Transport Platform (Backend + Frontend) ..."
+
 cd transport-backend
 node server.js &
 BACKEND_PID=$!
 cd ../transport-dashboard
 npm run dev &
 FRONTEND_PID=$!
-echo "✅ Alles gestart! Backend PID: $BACKEND_PID, Frontend PID: $FRONTEND_PID"
-echo "CTRL+C om te stoppen"
 wait
 EOF
 chmod +x start-all.sh
 
-echo "======================================"
-echo "🎉 INSTALLATIE VOLTOOID!"
 echo "Gebruik ./start-all.sh om backend + frontend in één terminal te starten!"
