@@ -7,7 +7,7 @@ let package = Package(
     targets: [
         .executableTarget(
             name: "VoiceCalendar",
-            path: "Sources"
+            path: "."
         )
     ]
 )
