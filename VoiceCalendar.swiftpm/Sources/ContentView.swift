@@ -45,7 +45,12 @@ struct ContentView: View {
                     .symbolEffect(.bounce, value: speech.isRecording)
             }
 
-            if !feedback.isEmpty {
+            if !speech.errorMessage.isEmpty {
+                Text(speech.errorMessage)
+                    .multilineTextAlignment(.center)
+                    .foregroundStyle(.orange)
+                    .padding(.horizontal)
+            } else if !feedback.isEmpty {
                 Text(feedback)
                     .multilineTextAlignment(.center)
                     .foregroundStyle(feedbackIsSuccess ? .green : .red)
